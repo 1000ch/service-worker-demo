@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8">
+    <title>Service Worker basic cache</title>
+  </head>
+  <body>
+    <script>
+      if (navigator.serviceWorker) {
+        navigator.serviceWorker.register('./service-worker.js', {
+          scope: location.pathname
+        }).then(() => {
+          return navigator.serviceWorker.ready;
+        }).then(registration => {
+          console.log(registration);
+        }).catch(error => {
+          console.error(error);
+        });
+      }
+    </script>
+  </body>
+</html>
